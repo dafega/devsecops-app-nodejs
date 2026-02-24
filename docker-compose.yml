@@ -1,0 +1,12 @@
+services:
+  bicycle-app:
+    build: .
+    ports:
+      - "5001:5000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - DATABASE=/app/data/inventory.db
+    restart: unless-stopped
