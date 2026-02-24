@@ -1,0 +1,22 @@
+{
+  "name": "devsecops-app-nodejs",
+  "version": "1.0.0",
+  "description": "API CRUD inventario de bicicletas - Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "test": "node --test tests/",
+    "test:coverage": "node --experimental-test-coverage --test tests/"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": ["api", "crud", "bicycles", "inventory"],
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^11.6.0",
+    "express": "^4.21.0"
+  },
+  "devDependencies": {}
+}
