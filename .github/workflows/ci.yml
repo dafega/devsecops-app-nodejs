@@ -118,10 +118,7 @@ jobs:
           done
 
       - name: Prepare ZAP output directory
-        run: |
-          mkdir -p zap-report/zap/wrk
-          touch zap-report/zap/wrk/zap-baseline-report.html
-          chmod -R 777 zap-report
+        run: mkdir -p zap-report && chmod 777 zap-report
 
       - name: OWASP ZAP Baseline scan (DAST)
         run: |
@@ -131,15 +128,9 @@ jobs:
             ghcr.io/zaproxy/zaproxy:stable \
             zap-baseline.py \
             -t http://bicycle-app:5000/api/bicycles \
-            -r /zap/wrk/zap/wrk/zap-baseline-report.html \
+            -r zap-baseline-report.html \
             -I
         continue-on-error: true
-
-      - name: Copiar reporte HTML a la raíz del artefacto
-        run: |
-          if [ -f zap-report/zap/wrk/zap-baseline-report.html ]; then
-            cp zap-report/zap/wrk/zap-baseline-report.html zap-report/zap-baseline-report.html
-          fi
 
       - name: Upload ZAP report
         uses: actions/upload-artifact@v4
