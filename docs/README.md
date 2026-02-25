@@ -39,3 +39,5 @@ En el repositorio (Settings → Secrets and variables → Actions) configura:
 |----------------------|--------------------------------------------------|
 | `DOCKERHUB_USERNAME` | Usuario de Docker Hub                           |
 | `DOCKERHUB_TOKEN`    | Token de acceso (Docker Hub → Account → Security)|
+
+---
