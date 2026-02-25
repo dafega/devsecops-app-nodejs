@@ -39,3 +39,10 @@ En el repositorio (Settings → Secrets and variables → Actions) configura:
 |----------------------|--------------------------------------------------|
 | `DOCKERHUB_USERNAME` | Usuario de Docker Hub                           |
 | `DOCKERHUB_TOKEN`    | Token de acceso (Docker Hub → Account → Security)|
+
+---
+
+## ArgoCD: Application vs deployment
+
+- **`argocd/application.yaml`** – Se aplica **una vez** en el cluster (`kubectl apply -f argocd/application.yaml`). Registra la app en ArgoCD: repo, rama, carpeta `k8s` y namespace destino. ArgoCD queda “corriendo” esa app y sincronizando.
+- **`k8s/deployment.yaml`** – Es la **carga de trabajo** (Deployment + Service). ArgoCD lo sincroniza desde el repo al namespace `devsecops` cada vez que hay cambios (por el CD o al hacer Sync). Los despliegues se hacen actualizando este archivo (p. ej. nueva imagen) y dejando que ArgoCD sincronice.

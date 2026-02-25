@@ -1,0 +1,36 @@
+# Manifiesto Application de ArgoCD: registra la app para que ArgoCD la tenga corriendo.
+# Se aplica UNA vez en el cluster (namespace argocd):
+#   kubectl apply -f argocd/application.yaml
+#
+# ArgoCD vigila la carpeta k8s/ del repo y sincroniza su contenido (deployment.yaml, etc.)
+# al namespace devsecops. Los despliegues se hacen vía CD (nueva imagen) o al hacer Sync.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: devsecops-app-nodejs
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/dafega/devsecops-app-nodejs
+    path: k8s
+    targetRevision: main
+    directory:
+      recurse: false
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: devsecops
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
