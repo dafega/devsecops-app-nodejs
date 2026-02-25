@@ -117,6 +117,9 @@ jobs:
             sleep 2
           done
 
+      - name: Prepare ZAP output directory
+        run: mkdir -p zap-report && chmod 777 zap-report
+
       - name: OWASP ZAP Baseline scan (DAST)
         run: |
           docker run --rm \
