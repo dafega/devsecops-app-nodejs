@@ -11,9 +11,12 @@ let dbInstance = null;
  */
 function getDb(dbPath) {
   if (!dbInstance) {
-    const resolved = path.isAbsolute(dbPath) ? dbPath : path.join(process.cwd(), dbPath);
+    const resolved =
+      path.isAbsolute(dbPath) || dbPath === ':memory:'
+        ? dbPath
+        : path.join(process.cwd(), dbPath);
     const dir = path.dirname(resolved);
-    if (dir !== '.') {
+    if (dir !== '.' && resolved !== ':memory:') {
       fs.mkdirSync(dir, { recursive: true });
     }
     dbInstance = new Database(resolved);
