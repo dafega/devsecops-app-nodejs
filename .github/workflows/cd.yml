@@ -1,5 +1,3 @@
-# Pipeline CD - Despliegue manual (workflow_dispatch)
-
 name: CD Pipeline
 
 on:
