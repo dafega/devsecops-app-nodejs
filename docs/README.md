@@ -41,15 +41,3 @@ En el repositorio (Settings → Secrets and variables → Actions) configura:
 | `DOCKERHUB_TOKEN`    | Token de acceso (Docker Hub → Account → Security)|
 
 ---
-
-## Probar la API en el cluster (Kubernetes/ArgoCD)
-
-El pod y el Service usan el puerto **5000** dentro del cluster. Para acceder desde tu máquina en el puerto **5003** (si el 5000 local está ocupado):
-
-```bash
-kubectl port-forward -n devsecops svc/devsecops-app-nodejs 5003:5000
-```
-
-Luego: `curl -s http://localhost:5003/api/bicycles/health`
-
----

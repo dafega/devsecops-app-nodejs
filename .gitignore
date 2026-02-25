@@ -140,3 +140,4 @@ vite.config.ts.timestamp-*
 
 # Mac OS 
 .DS_Store
+obsidian.md
