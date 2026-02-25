@@ -22,10 +22,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Análisis estático (ESLint)
         run: npm run lint
@@ -35,6 +34,7 @@ jobs:
 
   # 2. Pruebas unitarias con cobertura mínima 80%
   unit-tests:
+    needs: [static-and-sca]
     name: Pruebas unitarias y coverage 80%
     runs-on: ubuntu-latest
     steps:
@@ -44,10 +44,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Run tests with coverage
         run: npm run test:coverage
