@@ -1,5 +1,3 @@
-# Manifiesto actualizado por el pipeline CD (imagen etiquetada con SHA del commit).
-# ArgoCD sincroniza este archivo para desplegar la nueva versión.
 apiVersion: apps/v1
 kind: Deployment
 metadata:
