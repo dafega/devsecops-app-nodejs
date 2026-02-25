@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: dafegaveimages/devsecops-app-nodejs:ee6428bc246c0b765093f9758c65cfca32688d3c
+          image: dafegaveimages/devsecops-app-nodejs:35db72af2a05818a863980e26c6317297500161d
           ports:
             - containerPort: 5000
           env:
