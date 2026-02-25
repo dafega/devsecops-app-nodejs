@@ -1,9 +1,4 @@
 # Pipeline CD - Despliegue manual (workflow_dispatch)
-# Construye la imagen, etiqueta con SHA, sube a Docker Hub y actualiza el manifiesto K8s para ArgoCD.
-#
-# Secrets necesarios en el repo (Settings → Secrets and variables → Actions):
-#   DOCKERHUB_USERNAME - usuario de Docker Hub
-#   DOCKERHUB_TOKEN    - token de acceso (Access Token en Docker Hub → Account → Security)
 
 name: CD Pipeline
 
