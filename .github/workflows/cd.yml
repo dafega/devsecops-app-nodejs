@@ -1,5 +1,3 @@
-# Pipeline CD - Despliegue manual (workflow_dispatch)
-
 name: CD Pipeline
 
 on:
@@ -55,6 +53,8 @@ jobs:
     name: Actualizar manifiesto Kubernetes
     runs-on: ubuntu-latest
     needs: build-and-push
+    permissions:
+     contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4

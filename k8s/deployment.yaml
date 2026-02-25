@@ -1,5 +1,3 @@
-# Manifiesto actualizado por el pipeline CD (imagen etiquetada con SHA del commit).
-# ArgoCD sincroniza este archivo para desplegar la nueva versión.
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,7 +16,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: DOCKERHUB_USERNAME/devsecops-app-nodejs:latest
+          image: dafegaveimages/devsecops-app-nodejs:ee6428bc246c0b765093f9758c65cfca32688d3c
           ports:
             - containerPort: 5000
           env:
