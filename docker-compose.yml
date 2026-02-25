@@ -1,4 +1,11 @@
 services:
+  # Ejecutar tests y ver logs: docker compose run test
+  test:
+    build:
+      context: .
+      target: test
+    command: ["sh", "-c", "npm run lint && npm run test:coverage"]
+
   bicycle-app:
     build: .
     ports:

@@ -1,0 +1,52 @@
+# Manifiesto actualizado por el pipeline CD (imagen etiquetada con SHA del commit).
+# ArgoCD sincroniza este archivo para desplegar la nueva versión.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devsecops-app-nodejs
+  labels:
+    app: devsecops-app-nodejs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devsecops-app-nodejs
+  template:
+    metadata:
+      labels:
+        app: devsecops-app-nodejs
+    spec:
+      containers:
+        - name: app
+          image: DOCKERHUB_USERNAME/devsecops-app-nodejs:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: PORT
+              value: "5000"
+            - name: DATABASE
+              value: /app/data/inventory.db
+          volumeMounts:
+            - name: data
+              mountPath: /app/data
+      volumes:
+        - name: data
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: devsecops-app-nodejs
+  labels:
+    app: devsecops-app-nodejs
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5003
+      targetPort: 5000
+      protocol: TCP
+      name: http
+  selector:
+    app: devsecops-app-nodejs
