@@ -5,7 +5,7 @@ const bicyclesRouter = require('./routes/bicycles');
 const DEFAULT_DATABASE = 'inventory.db';
 
 /**
- * Crea y configura la aplicación Express.
+ * Create and configure the Express application.
  * @param {Object} [options]
  * @param {string} [options.database] - Ruta al archivo SQLite
  * @returns {import('express').Application}

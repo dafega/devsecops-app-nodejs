@@ -1,5 +1,4 @@
 services:
-  # Ejecutar tests y ver logs: docker compose run test
   test:
     build:
       context: .

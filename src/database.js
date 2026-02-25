@@ -5,8 +5,8 @@ const fs = require('fs');
 let dbInstance = null;
 
 /**
- * Obtiene una conexión a la base de datos.
- * @param {string} dbPath - Ruta al archivo SQLite (ej: 'inventory.db')
+ * Get a connection to the database.
+ * @param {string} dbPath - SQLite file path (e.g. 'inventory.db')
  * @returns {import('better-sqlite3').Database}
  */
 function getDb(dbPath) {
@@ -25,8 +25,8 @@ function getDb(dbPath) {
 }
 
 /**
- * Inicializa la base de datos y crea la tabla bicycles si no existe.
- * @param {string} dbPath - Ruta al archivo SQLite
+ * Initialize the database and create the bicycles table if it doesn't exist.
+ * @param {string} dbPath - SQLite file path (e.g. 'inventory.db')
  */
 function initDb(dbPath) {
   const db = getDb(dbPath);
@@ -42,7 +42,7 @@ function initDb(dbPath) {
 }
 
 /**
- * Cierra la conexión (útil para tests).
+ * Close the connection (useful for tests).
  */
 function closeDb() {
   if (dbInstance) {
@@ -52,7 +52,7 @@ function closeDb() {
 }
 
 /**
- * Reemplaza la instancia de DB (solo para tests con DB temporal).
+ * Replace the DB instance (only for tests with temporary DB).
  * @param {import('better-sqlite3').Database|null} instance
  */
 function setDbInstance(instance) {
