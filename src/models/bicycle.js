@@ -20,7 +20,7 @@ class Bicycle {
   }
 
   /**
-   * Crea una nueva bicicleta.
+   * Create bicycle
    */
   static create(propietario, marca, tamano, color, dbPath = 'inventory.db') {
     const db = require('../database').getDb(dbPath);
@@ -32,7 +32,7 @@ class Bicycle {
   }
 
   /**
-   * Obtiene todas las bicicletas.
+   * Get all bicycles
    */
   static getAll(dbPath = 'inventory.db') {
     const db = require('../database').getDb(dbPath);
@@ -41,7 +41,7 @@ class Bicycle {
   }
 
   /**
-   * Obtiene una bicicleta por ID.
+   * Get bicycle by ID
    */
   static getById(bicycleId, dbPath = 'inventory.db') {
     const db = require('../database').getDb(dbPath);
@@ -51,7 +51,7 @@ class Bicycle {
   }
 
   /**
-   * Actualiza una bicicleta (solo campos enviados).
+   * Update bicycle (only sent fields)
    */
   static update(bicycleId, { propietario, marca, tamano, color } = {}, dbPath = 'inventory.db') {
     const db = require('../database').getDb(dbPath);
@@ -84,7 +84,7 @@ class Bicycle {
   }
 
   /**
-   * Elimina una bicicleta por ID.
+   * Delete bicycle by ID
    */
   static delete(bicycleId, dbPath = 'inventory.db') {
     const db = require('../database').getDb(dbPath);

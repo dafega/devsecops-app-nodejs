@@ -11,7 +11,6 @@ on:
       - main
 
 jobs:
-  # 1. Análisis estático (ESLint) y análisis de vulnerabilidades en dependencias (SCA)
   static-and-sca:
     name: Análisis estático y SCA
     runs-on: ubuntu-latest
@@ -32,7 +31,6 @@ jobs:
       - name: Análisis de vulnerabilidades (SCA) - npm audit
         run: npm audit --audit-level=high
 
-  # 2. Pruebas unitarias con cobertura mínima 80%
   unit-tests:
     needs: [static-and-sca]
     name: Pruebas unitarias y coverage 80%
@@ -58,7 +56,6 @@ jobs:
           path: coverage/
           retention-days: 7
 
-  # 3. Build de imagen Docker y análisis Trivy (vulnerabilidades en la imagen)
   docker-build-trivy:
     name: Docker Build y Trivy
     runs-on: ubuntu-latest
@@ -89,7 +86,6 @@ jobs:
           vuln-type: 'os,library'
           severity: 'CRITICAL'
 
-  # 4. Análisis dinámico (DAST) con OWASP ZAP Baseline; reporte como artefacto
   dast:
     name: DAST (OWASP ZAP Baseline)
     runs-on: ubuntu-latest

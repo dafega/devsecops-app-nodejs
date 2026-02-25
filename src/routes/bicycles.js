@@ -7,7 +7,7 @@ function getDbPath(req) {
   return req.app.get('database') || 'inventory.db';
 }
 
-/** GET /api/bicycles - Listar todas las bicicletas */
+/** GET /api/bicycles */
 router.get('/', (req, res) => {
   try {
     const bicycles = Bicycle.getAll(getDbPath(req));
@@ -22,7 +22,7 @@ router.get('/health', (req, res) => {
   res.status(200).json({ status: 'healthy', service: 'bicycles-inventory-api' });
 });
 
-/** GET /api/bicycles/:id - Obtener una bicicleta por ID */
+/** GET /api/bicycles/:id  */
 router.get('/:id', (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
@@ -39,7 +39,7 @@ router.get('/:id', (req, res) => {
   }
 });
 
-/** POST /api/bicycles - Crear bicicleta */
+/** POST /api/bicycles */
 router.post('/', (req, res) => {
   try {
     const data = req.body || {};
@@ -68,7 +68,7 @@ router.post('/', (req, res) => {
   }
 });
 
-/** PUT /api/bicycles/:id - Actualizar bicicleta */
+/** PUT /api/bicycles/:id */
 router.put('/:id', (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
@@ -97,7 +97,7 @@ router.put('/:id', (req, res) => {
   }
 });
 
-/** DELETE /api/bicycles/:id - Eliminar bicicleta */
+/** DELETE /api/bicycles/:id */
 router.delete('/:id', (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
